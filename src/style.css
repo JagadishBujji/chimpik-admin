@@ -1,0 +1,143 @@
+.css-13pv91e-MuiButtonBase-root-MuiTab-root.Mui-selected {
+  color: #fff;
+}
+
+.css-13xfq8m-MuiTabPanel-root {
+  padding: 15px;
+}
+
+.css-6d3pg0-MuiTabs-indicator {
+  background: none;
+}
+
+/* .css-n6slmn-MuiButtonBase-root-MuiListItemButton-root {
+  background: linear-gradient(90deg, rgba(171, 26, 253, 1) 14%, rgba(73, 26, 255, 1) 68%);
+  color: #fff;
+  transition: 1s;
+} */
+
+/* .css-mpr9kc-MuiPaper-root-MuiDrawer-paper {
+  width: 170px;
+} */
+
+.css-1y6sui9 {
+  width: 160px;
+}
+
+.css-a083jv-MuiPaper-root-MuiAppBar-root {
+  width: calc(100% - 170px);
+}
+
+.img-upload {
+  margin: 5px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.img-upload1 {
+  margin: 5px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.bank {
+  padding: 10px;
+}
+
+.uploaded {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  /* overflow: auto; */
+}
+
+.css-1byr0tz {
+  padding: 100px 40px;
+}
+
+.details {
+  display: flex;
+  /* align-items: center; */
+  flex-direction: row;
+}
+
+.details-para {
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.img-focus {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* .team-heading {
+  font-size: 18px;
+} */
+
+.fa-chevron-right,
+.back {
+  cursor: pointer;
+}
+
+.team-hirer {
+  padding: 10px;
+}
+
+p {
+  margin-bottom: 10px;
+}
+
+.data {
+  font-size: 14px;
+}
+
+.pdf {
+  inline-size: inherit;
+  overflow-wrap: break-word;
+}
+
+.css-125m4wn {
+  padding: 0;
+}
+
+.profile-pic {
+  width: 200px;
+  max-height: 200px;
+  display: inline-block;
+}
+
+.file-upload {
+  display: none;
+}
+.circle {
+  border-radius: 100% !important;
+  overflow: hidden;
+  width: 128px;
+  height: 128px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  position: absolute;
+  top: 72px;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+.p-image {
+  position: absolute;
+  top: 167px;
+  right: 30px;
+  color: #666666;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.p-image:hover {
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.upload-button {
+  font-size: 1.2em;
+}
+
+.upload-button:hover {
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  color: #999;
+}
