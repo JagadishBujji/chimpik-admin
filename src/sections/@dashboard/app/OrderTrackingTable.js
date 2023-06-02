@@ -151,7 +151,7 @@ export default function OrderTrackingTable() {
 
   useEffect(() => {
     const getData = async () => {
-      const querySnapshot = await getDocs(query(collection(db, 'team_hire_post'), oB('posted_on', 'desc')));
+      const querySnapshot = await getDocs(query(collection(db, 'userDetails')));
       const arr = [];
       querySnapshot.forEach((doc) => {
         const data = doc.data();
@@ -163,7 +163,7 @@ export default function OrderTrackingTable() {
         };
         arr.push(obj);
       });
-      // console.log(teamHire);
+      console.log("userDetails:".arr);
       setTeamHire(arr);
       setDisplayData(arr);
     };
@@ -213,34 +213,22 @@ export default function OrderTrackingTable() {
                         <Stack direction="row" alignItems="center" spacing={2}>
                           <Avatar alt={name} src={avatarUrl} />
                           <Typography variant="subtitle2" noWrap>
-                            {row.title}
+                            {row.userName}
                           </Typography>
                         </Stack>
                       </TableCell>
                       <TableCell sx={{ color: 'gray', width: '150px' }} align="left">
-                        {row.event_type ? row.event_type : ''}
+                        {row.ContactID ? row.ContactID : ''}
                       </TableCell>
                       <TableCell sx={{ color: 'gray', width: '200px' }} align="left">
-                        {row.camera_gear
-                          ? row.camera_gear.map((gs, index) => {
-                              return `
-                          [${index + 1}] ${gs.Name} Rs-${gs.Price}   
-                        `;
-                            })
-                          : ''}
+                        {row.address ? row.address : ''}
                       </TableCell>
                       <TableCell sx={{ color: 'gray', width: '200px' }} align="left">
-                        {row.video_gear
-                          ? row.video_gear.map((gs, index) => {
-                              return `
-                          [${index + 1}] ${gs.Name} Rs-${gs.Price}   
-                        `;
-                            })
-                          : ''}
+                        {row.profession ? row.profession : ''}
                       </TableCell>
 
                       <TableCell sx={{ color: 'gray', width: '200px' }} align="left">
-                        {row.description ? row.description : ''}
+                        {row.experience ? row.experience : ''}
                       </TableCell>
                       {/* <TableCell sx={{ color: 'gray', width: '150px' }} align="left" padding="checkbox">
                         {row.posted_on_date ? row.posted_on_date : ''}

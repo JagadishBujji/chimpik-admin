@@ -58,7 +58,7 @@ export default function UserListHead({
               sortDirection={orderBy === headCell.id ? order : false}
               sx={{
                 width: '10%',
-                color: '#000',
+                color: '#644AD1',
               }}
             >
               <TableSortLabel

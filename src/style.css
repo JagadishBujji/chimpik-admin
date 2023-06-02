@@ -10,6 +10,11 @@
   background: none;
 }
 
+.css-1yapb00-MuiButtonBase-root-MuiListItemButton-root{
+  background: #644AD1;
+  color: #fff;
+}
+
 /* .css-n6slmn-MuiButtonBase-root-MuiListItemButton-root {
   background: linear-gradient(90deg, rgba(171, 26, 253, 1) 14%, rgba(73, 26, 255, 1) 68%);
   color: #fff;
