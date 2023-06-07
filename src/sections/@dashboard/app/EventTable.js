@@ -48,13 +48,14 @@ import USERLIST from '../../../_mock/user';
 //   { id: 'eventprice', label: 'Event Price', alignRight: false },
 // ];
 const TABLE_HEAD = [
-  { id: 'title', label: 'Title', alignRight: false },
-  { id: 'service', label: 'Service', alignRight: false },
-  { id: 'experience', label: 'Experience', alignRight: false },
-  { id: 'video_gear', label: 'Video gear', alignRight: false },
-  { id: 'description', label: 'Description', alignRight: false },
-  { id: 'price', label: 'Price', alignRight: false },
-  { id: 'section', label: 'section', alignRight: false },
+  { id: 'title', label: 'Order Name', alignRight: false },
+  { id: 'service', label: 'Event Date', alignRight: false },
+  { id: 'experience', label: 'Event Location', alignRight: false },
+  { id: 'video_gear', label: 'Category', alignRight: false },
+  { id: 'description', label: 'Customer Name', alignRight: false },
+  // { id: 'price', label: 'Contact Number', alignRight: false },
+  // { id: 'price', label: 'Address', alignRight: false },
+  { id: 'section', label: 'Order Status', alignRight: false },
 ];
 
 // ----------------------------------------------------------------------
@@ -88,7 +89,7 @@ function applySortFilter(array, comparator, query) {
   return stabilizedThis.map((el) => el[0]);
 }
 
-export default function FreeBeeTable() {
+export default function EventTable() {
   const [page, setPage] = useState(0);
 
   const [order, setOrder] = useState('asc');
@@ -158,7 +159,7 @@ export default function FreeBeeTable() {
 
   useEffect(() => {
     const getData = async () => {
-      const querySnapshot = await getDocs(query(collection(db, 'freebie_post'), oB('posted_on', 'desc')));
+      const querySnapshot = await getDocs(query(collection(db, 'orders')));
       const arr = [];
       querySnapshot.forEach((doc) => {
         const data = doc.data();
@@ -181,7 +182,7 @@ export default function FreeBeeTable() {
     <Card sx={{ padding: '20px' }}>
       {/* <UserListToolbar numSelected={selected.length} filterName={filterName} onFilterName={handleFilterByName} /> */}
       <Typography sx={{ flex: '1 1 100%' }} variant="h6" id="tableTitle" component="div">
-        FreeBee
+        Event List
       </Typography>
       <Scrollbar sx={{ padding: '20px' }}>
         <TableContainer sx={{ minWidth: 1000 }}>
@@ -208,13 +209,13 @@ export default function FreeBeeTable() {
                     role="checkbox"
                     selected={isItemSelected}
                     aria-checked={isItemSelected}
-                    onClick={() => navigate(`/dashboard/freebee/${row.doc_id}`)}
+                    onClick={() => navigate(`/dashboard/event/${row.doc_id}`)}
                   >
                     {/* <TableCell padding="checkbox">
                         <Checkbox checked={isItemSelected} onChange={(event) => handleClick(event, name)} />
                       </TableCell> */}
                     <TableCell sx={{ color: 'gray', width: '30%' }} align="left" padding="checkbox">
-                      {row?.title ? row?.title : ''}
+                      {row?.orderName ? row?.orderName : ''}
                     </TableCell>
 
                     <TableCell sx={{ color: 'gray', width: '25%' }} component="th" scope="row" padding="none">
@@ -223,34 +224,28 @@ export default function FreeBeeTable() {
                         <Typography variant="subtitle2" noWrap>
                           {/* {row?.service ? row?.service?.map((fs) => `${fs} `) : ''}  */}
                           {/* service is coming as string: service: "Videography" */}
-                          {row?.service ? row?.service : ''}
+                          {row?.eventDate ? row?.eventDate : ''}
                         </Typography>
                       </Stack>
                     </TableCell>
                     <TableCell sx={{ color: 'gray', width: '200px' }} align="left">
-                      {row.experience ? row.experience : ''}
+                      {row.eventLocation ? row.eventLocation : ''}
                     </TableCell>
                     <TableCell sx={{ color: 'gray', width: '40%' }} align="left">
-                      {row.video_gear
-                        ? row.video_gear.map((gs, index) => (
-                            <li key={gs.Name}>
-                              {gs.Name} - Rs.{gs.Price}
-                            </li>
-                          ))
-                        : ''}
+                    {row.category ? row.category : ''}
                     </TableCell>
                     <TableCell sx={{ color: 'gray', width: '30%' }} align="left">
-                      {row.description ? row.description : ''}
+                      {row.customerName ? row.customerName : ''}
                     </TableCell>
                     <TableCell sx={{ color: 'gray' }} align="left">
-                      {row?.price}
+                      {row?.orderStatus}
                     </TableCell>
-                    <TableCell sx={{ color: 'gray' }} align="left">
+                    {/* <TableCell sx={{ color: 'gray' }} align="left">
                       {row?.section}
-                    </TableCell>
+                    </TableCell> */}
 
-                    <TableCell onClick={(e) => e.stopPropagation()} sx={{ color: 'gray' }} align="right">
-                      {/* <FeebeeMenuMore collection="freebie_post" id={row.doc_id} /> */}
+                    {/* <TableCell onClick={(e) => e.stopPropagation()} sx={{ color: 'gray' }} align="right">
+                     
                       <MenuItem
                         onClick={() => {
                           console.log('navigate');
@@ -260,7 +255,7 @@ export default function FreeBeeTable() {
                       >
                         <ListItemText primary="View" primaryTypographyProps={{ variant: 'body2' }} />
                       </MenuItem>
-                    </TableCell>
+                    </TableCell> */}
                   </TableRow>
                 );
               })}

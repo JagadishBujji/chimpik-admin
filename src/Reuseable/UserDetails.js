@@ -11,11 +11,11 @@ const UserDetails = () => {
           <Typography
             variant="h4"
             onClick={() => {
-              navigate('/dashboard/app');
+              navigate('/dashboard/user');
             }}
             className="back"
           >
-            Team Hire <i className="fas fa-chevron-right" /> <span className="team-heading"> Team Details</span>
+            Jobs <i className="fas fa-chevron-right" /> <span className="team-heading"> Jobs Details</span>
           </Typography>
         </Stack>
         <Grid container spacing={3}>
@@ -24,7 +24,7 @@ const UserDetails = () => {
               <div className="row details">
                 <div className="col-md-6">
                   <p className="details-para">
-                    <b>Date and Time :</b> Jagadish Kumar
+                    <b>Order ID:</b> Jagadish Kumar
                   </p>
                   <p className="details-para">
                     <b>Email :</b> Jagadish00198@gmail.com

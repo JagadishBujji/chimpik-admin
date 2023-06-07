@@ -13,8 +13,10 @@ import DashboardApp from './pages/DashboardApp';
 import TeamHirer from './Reuseable/TeamHirer';
 import FreeBee from './Reuseable/FreeBee';
 import UserDetail from './Reuseable/UserDetail';
-import Payment from './pages/Payment';
+import Jobs from './pages/Jobs';
 import Financial from './Reuseable/Financial';
+import UserDetails from './Reuseable/UserDetails';
+import JobsDetails from './Reuseable/JobsDetails';
 
 // ----------------------------------------------------------------------
 
@@ -25,14 +27,17 @@ export default function Router() {
     {
       path: '/dashboard',
       // element: kangroo ? <DashboardLayout /> : <Navigate to="/login" />,
-      element: kangroo ? <DashboardLayout /> : <Navigate to="/login" />,
+      element: <DashboardLayout />,
+      //  :
+      // <Navigate to="/login" />,
       children: [
-        { path: 'app', element: <DashboardApp /> },
-        { path: 'user', element: <User /> },
-        { path: 'user/:id/financial', element: <Financial /> },
-        { path: 'user/:id', element: <UserDetail /> },
+        { path: 'user', element: <DashboardApp /> },
+        { path: 'event', element: <User /> },
+        // { path: 'event/:id/financial', element: <Financial /> },
+        { path: 'event/:id', element: <UserDetail /> },
         { path: 'profile', element: <Profile /> },
-        { path: 'payment', element: <Payment /> },
+        { path: 'jobs', element: <Jobs /> },
+        { path: 'jobs/:id', element: <JobsDetails /> },
         { path: 'blog', element: <Blog /> },
         { path: 'hirer/:id', element: <TeamHirer /> },
         { path: 'freebee/:id', element: <FreeBee /> },
@@ -40,17 +45,17 @@ export default function Router() {
     },
     {
       path: 'login',
-      element: kangroo ? <Navigate to="/dashboard/app" /> : <Login />,
+      element: kangroo ? <Navigate to="/dashboard/user" /> : <Login />,
     },
     {
       path: 'register',
-      element: kangroo ? <Navigate to="/dashboard/app" /> : <Register />,
+      element: kangroo ? <Navigate to="/dashboard/user" /> : <Register />,
     },
     {
       path: '/',
       element: <LogoOnlyLayout />,
       children: [
-        { path: '/', element: <Navigate to="/dashboard/app" /> },
+        { path: '/', element: <Navigate to="/dashboard/user" /> },
         { path: '404', element: <NotFound /> },
         { path: '*', element: <Navigate to="/404" /> },
       ],

@@ -5,7 +5,7 @@ import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 import OrderTrackingTable from '../sections/@dashboard/app/OrderTrackingTable';
-import FreeBeeTable from '../sections/@dashboard/app/FreeBeeTable';
+import FreeBeeTable from '../sections/@dashboard/app/EventTable';
 import Tabs from './Tabs';
 
 export default function UpComingTabs() {

@@ -34,7 +34,7 @@ const FreeBee = () => {
           <Typography
             variant="h4"
             onClick={() => {
-              navigate('/dashboard/app');
+              navigate('/dashboard/user');
             }}
             className="back"
           >

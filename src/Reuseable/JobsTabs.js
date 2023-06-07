@@ -4,9 +4,9 @@ import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
-import PaymentData from './PaymentData';
+import JobsData from './JobsData';
 
-export default function PaymentTabs() {
+export default function JobsTabs() {
   const [value, setValue] = React.useState('1');
 
   const handleChange = (event, newValue) => {
@@ -21,7 +21,7 @@ export default function PaymentTabs() {
     textTransform: 'none',
     '&.Mui-selected': {
       fontWeight: '700',
-      background: 'linear-gradient(90deg, rgba(171,26,253,1) 14%, rgba(73,26,255,1) 68%)',
+      background: '#644AD1',
       color: '#fff',
       outline: 'none',
       borderRadius: '5px',
@@ -39,16 +39,16 @@ export default function PaymentTabs() {
       <TabContext value={value}>
         <Box sx={{ borderBottom: 'none', borderColor: 'divider' }}>
           <TabList onChange={handleChange} aria-label="lab API tabs example">
-            <Tab sx={tab} label="Settled" value="1" />
-            <Tab sx={tab} label="Unsettled" value="2" />
+            <Tab sx={tab} label="Upcoming" value="1" />
+            <Tab sx={tab} label="Compeleted" value="2" />
             {/* <Tab label="Item Three" value="3" /> */}
           </TabList>
         </Box>
         <TabPanel value="1">
-          <PaymentData isPaymentReleased />
+          <JobsData isPaymentReleased />
         </TabPanel>
         <TabPanel value="2">
-          <PaymentData isPaymentReleased={false} />
+          <JobsData isPaymentReleased={false} />
         </TabPanel>
         {/* <TabPanel value="3">Item Three</TabPanel> */}
       </TabContext>

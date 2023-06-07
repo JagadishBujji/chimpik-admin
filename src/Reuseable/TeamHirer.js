@@ -12,7 +12,7 @@ const TeamHirer = () => {
   const [data, setData] = useState();
   useEffect(() => {
     const getData = async () => {
-      const docRef = doc(db, 'team_hire_post', id);
+      const docRef = doc(db, 'userDetails', id);
       const docSnap = await getDoc(docRef);
       if (docSnap.exists()) {
         setData(docSnap.data());
@@ -31,7 +31,7 @@ const TeamHirer = () => {
           <Typography
             variant="h4"
             onClick={() => {
-              navigate('/dashboard/app');
+              navigate('/dashboard/user');
             }}
             className="back"
           >
@@ -46,8 +46,7 @@ const TeamHirer = () => {
                   <b>Profile Pic </b>{' '}
                 </p>
                 <p>
-                  {/* {data?.start_date} {data?.start_time} */}
-                  <Avatar />
+                  <Avatar src={data?.profilePic} />
                 </p>
               </div>
               <div className="team-hirer">
@@ -55,34 +54,34 @@ const TeamHirer = () => {
                   <b>User Name </b>{' '}
                 </p>
                 <p>
-                  {data?.end_date} {data?.end_time}
+                  {data?.userName} {data?.userName}
                 </p>
               </div>
               <div className="team-hirer">
                 <p>
                   <b>Phone Name</b>{' '}
                 </p>
-                <p>{data?.title}</p>
+                <p>{data?.ContactID}</p>
               </div>
               <div className="team-hirer">
                 <p>
                   <b>Address</b>{' '}
                 </p>
-                <p>{data?.event_type}</p>
+                <p>{data?.address}</p>
               </div>
               <div className="team-hirer">
                 <p>
                   <b>Profession </b>{' '}
                 </p>
-                <p>{data?.posted_on_date}</p>
+                <p>{data?.profession}</p>
               </div>
               <div className="team-hirer">
                 <p>
                   <b>Experience </b>{' '}
                 </p>
-                <p>{data?.description}</p>
+                <p>{data?.experience}</p>
               </div>
-              {data?.camera_gear && (
+              {/* {data?.camera_gear && (
                 <div className="team-hirer">
                   <p>
                     <b>Photography </b>{' '}
@@ -117,7 +116,7 @@ const TeamHirer = () => {
                   <b>Location </b>{' '}
                 </p>
                 <p>{data?.event_loc_link}</p>
-              </div>
+              </div> */}
               {/* <div className="team-hirer">
                 <p>
                   <b>Event status </b>{' '}

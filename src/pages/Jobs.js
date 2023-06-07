@@ -20,20 +20,20 @@ import {
 import OrderTrackingTable from '../sections/@dashboard/app/OrderTrackingTable';
 import Tabs from '../Reuseable/Tabs';
 import UpComingTabs from '../Reuseable/UpComingTabs';
-import PaymentTabs from '../Reuseable/PaymentTabs';
+import JobsTabs from '../Reuseable/JobsTabs';
 
 // ----------------------------------------------------------------------
 
-export default function Payment() {
+export default function Jobs() {
   const theme = useTheme();
 
   return (
-    <Page title="Payment">
+    <Page title="Jobs">
       <Container maxWidth="xl">
         <Typography variant="h4" sx={{ mb: 5 }}>
-          Payment
+          Jobs
         </Typography>
-        <PaymentTabs />
+        <JobsTabs />
       </Container>
     </Page>
   );

@@ -5,7 +5,7 @@ import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 import OrderTrackingTable from '../sections/@dashboard/app/OrderTrackingTable';
-import FreeBeeTable from '../sections/@dashboard/app/FreeBeeTable';
+import EventTable from '../sections/@dashboard/app/EventTable';
 
 export default function Tabs({ type }) {
   const [value, setValue] = React.useState('1');
@@ -22,7 +22,7 @@ export default function Tabs({ type }) {
     textTransform: 'none',
     '&.Mui-selected': {
       fontWeight: '700',
-      background: 'linear-gradient(90deg, rgba(171,26,253,1) 14%, rgba(73,26,255,1) 68%)',
+      background: '#644AD1',
       color: '#fff',
       outline: 'none',
       borderRadius: '5px',
@@ -40,16 +40,16 @@ export default function Tabs({ type }) {
       <TabContext value={value}>
         <Box sx={{ borderBottom: 'none', borderColor: 'divider' }}>
           <TabList onChange={handleChange} aria-label="lab API tabs example">
-            <Tab sx={tab} label="Team Hire" value="1" />
-            <Tab sx={tab} label="FreeBee" value="2" />
+            <Tab sx={tab} label="Upcoming" value="1" />
+            <Tab sx={tab} label="Compeleted" value="2" />
             {/* <Tab label="Item Three" value="3" /> */}
           </TabList>
         </Box>
         <TabPanel value="1">
-          <OrderTrackingTable type={type} />
+          <EventTable type={type} />
         </TabPanel>
         <TabPanel value="2">
-          <FreeBeeTable type={type} />
+          <EventTable type={type} />
         </TabPanel>
         {/* <TabPanel value="3">Item Three</TabPanel> */}
       </TabContext>

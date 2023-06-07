@@ -22,7 +22,7 @@ const UserDetail = () => {
       setUser(location.state);
     } else {
       const getData = async () => {
-        const docRef = doc(db, 'UserDetails', id);
+        const docRef = doc(db, 'orders', id);
         const docSnap = await getDoc(docRef);
         const result = docSnap.data();
         // console.log('user: ', result);
@@ -39,11 +39,11 @@ const UserDetail = () => {
           <Typography
             variant="h4"
             onClick={() => {
-              navigate('/dashboard/user');
+              navigate('/dashboard/event');
             }}
             className="back"
           >
-            User <i className="fas fa-chevron-right" /> <span className="team-heading"> User Details</span>
+            Event <i className="fas fa-chevron-right" /> <span className="team-heading"> Event Details</span>
           </Typography>
         </Stack>
         <Grid container spacing={3}>
@@ -51,7 +51,7 @@ const UserDetail = () => {
             <Card sx={{ p: 2 }}>
               <Grid container spacing={3}>
                 <Grid item xs={12} sm={6} md={6}>
-                  <div className="team-hirer">
+                  {/* <div className="team-hirer">
                     <p>
                       <b>Profile Pic</b>{' '}
                     </p>
@@ -62,62 +62,62 @@ const UserDetail = () => {
                       height="80"
                       className="img-upload1"
                     />
+                  </div> */}
+                  <div className="team-hirer">
+                    <p>
+                      <b>Order Name</b>{' '}
+                    </p>
+                    <p className="pdf data">{user.orderName}</p>
                   </div>
                   <div className="team-hirer">
                     <p>
-                      <b>User Name</b>{' '}
+                      <b>Order Number</b>{' '}
                     </p>
-                    <p className="pdf data">{user.username}</p>
+                    <p className="pdf data">{user.orderNo}</p>
                   </div>
                   <div className="team-hirer">
                     <p>
-                      <b>User Email</b>{' '}
+                      <b>Event Location </b>{' '}
                     </p>
-                    <p className="pdf data">{user.email}</p>
+                    <p className="pdf data">{user.eventLocation}</p>
                   </div>
                   <div className="team-hirer">
                     <p>
-                      <b>Location </b>{' '}
+                      <b>Event Start Date</b>{' '}
                     </p>
-                    <p className="pdf data">{user.district}</p>
+                    <p className="pdf data">{user.eventDate ? user.eventDate : 'No Data'}</p>
                   </div>
                   <div className="team-hirer">
                     <p>
-                      <b>Landline no </b>{' '}
+                      <b>Event End Date </b>{' '}
                     </p>
-                    <p className="pdf data">{user.landline_no ? user.landline_no : 'No Data'}</p>
+                    <p className="pdf data">{user.eventEndDate ? user.eventEndDate : 'No Data'}</p>
                   </div>
                   <div className="team-hirer">
                     <p>
-                      <b>Phone Number </b>{' '}
+                      <b>Event Start</b>{' '}
                     </p>
-                    <p className="pdf data">{user.phone_number ? user.phone_number : 'No Data'}</p>
+                    <p className="pdf data">{user.eventStart ? user.eventStart : 'No Data'}</p>
                   </div>
                   <div className="team-hirer">
                     <p>
-                      <b>Alternative No </b>{' '}
+                      <b>Event Close </b>{' '}
                     </p>
-                    <p className="pdf data">{user.alternative_no ? user.alternative_no : 'No Data'}</p>
+                    <p className="pdf data">{user.eventClose ? user.eventClose : 'No Data'}</p>
                   </div>
                   <div className="team-hirer">
                     <p>
-                      <b>Gender </b>{' '}
+                      <b>Category </b>{' '}
                     </p>
-                    <p className="pdf data">{user.gender ? user.gender : 'No Data'}</p>
+                    <p className="pdf data">{user.category ? user.category : 'No Data'}</p>
                   </div>
                   <div className="team-hirer">
                     <p>
-                      <b>Blood Group </b>{' '}
+                      <b>Session </b>{' '}
                     </p>
-                    <p className="pdf data">{user.blood_group ? user.blood_group : 'No Data'}</p>
+                    <p className="pdf data">{user.session ? user.session : 'No Data'}</p>
                   </div>
-                  <div className="team-hirer">
-                    <p>
-                      <b>Experience </b>{' '}
-                    </p>
-                    <p className="pdf data">{user.experience ? user.experience : 'No Data'}</p>
-                  </div>
-                  <div className="team-hirer">
+                  {/* <div className="team-hirer">
                     <p>
                       <b>Language</b>{' '}
                     </p>
@@ -146,12 +146,12 @@ const UserDetail = () => {
                       <b>Education </b>{' '}
                     </p>
                     <p className="pdf data">{user.education ? user.education : 'No Data'}</p>
-                  </div>
+                  </div> */}
                 </Grid>
                 <Grid item xs={12} sm={6} md={6}>
                   <div className="team-hirer">
                     <p>
-                      <b>Event Type </b>{' '}
+                      <b>Customer Details </b>{' '}
                     </p>
 
                     <ol style={{ paddingLeft: '20px' }}>
@@ -166,15 +166,16 @@ const UserDetail = () => {
                   </div>
                   <div className="team-hirer">
                     <p>
-                      <b>Owner Name </b>
+                      <b>Customer Name </b>
                     </p>
-                    <p className="pdf data">{user.owner_name ? user.owner_name : 'No Data'}</p>
+                    <p className="pdf data">{user.customerName ? user.customerName : 'No Data'}</p>
                   </div>
                   <div className="team-hirer">
                     <p>
-                      <b>Service Type </b>{' '}
+                      <b>Customer Phone Number</b>{' '}
                     </p>
-                    <ol style={{ paddingLeft: '20px' }}>
+                    <p className="pdf data">{user.contactNumber ? user.contactNumber : 'No Data'}</p>
+                    {/* <ol style={{ paddingLeft: '20px' }}>
                       {user?.service_type?.length === 0 ? (
                         <p className="data" style={{ paddingLeft: '0px' }}>
                           No Data
@@ -182,30 +183,31 @@ const UserDetail = () => {
                       ) : (
                         user?.service_type?.map((serviceType) => <li className="data">{serviceType}</li>)
                       )}
-                    </ol>
+                    </ol> */}
                   </div>
                   <div className="team-hirer">
                     <p>
-                      <b>Specialist </b>{' '}
+                      <b>Customer Address </b>{' '}
                     </p>
-                    <ol style={{ paddingLeft: '20px' }}>
-                      <li className="pdf data">{user.specialist ? user.specialist : 'No Data'}</li>
-                    </ol>
+                    {/* <ol style={{ paddingLeft: '20px' }}>
+                      <li className="pdf data"></li>
+                    </ol> */}
+                    <p className="pdf data">{user.address ? user.address : 'No Data'}</p>
                   </div>
                   <div className="team-hirer">
                     <p>
-                      <b>Studio Name </b>{' '}
+                      <b>Advance Amount</b>{' '}
                     </p>
-                    <p className="pdf data">{user.studio_name ? user.studio_name : 'No Data'}</p>
+                    <p className="pdf data">{user.advanceAmount ? user.advanceAmount : 'No Data'}</p>
                   </div>
                   <div className="team-hirer">
                     <p>
-                      <b>Studio Location </b>{' '}
+                      <b>Total Amount </b>{' '}
                     </p>
-                    <p className="pdf data">{user.studio_location ? user.studio_location : 'No Data'} </p>
+                    <p className="pdf data">{user.totalAmount ? user.totalAmount : 'No Data'} </p>
                   </div>
 
-                  <div className="team-hirer">
+                  {/* <div className="team-hirer">
                     <p>
                       <b>Studio Services </b>{' '}
                     </p>
@@ -247,7 +249,7 @@ const UserDetail = () => {
                     >
                       {user.portfolio_pdf ? user.portfolio_pdf : 'No Data'}
                     </a>
-                    {/* <img src={user.portfolio_pdf ? user.portfolio_pdf : 'No Data'} alt="" width="80" height="80" className="img-upload" /> */}
+                   
                   </div>
                   {user?.bank_details && (
                     <>
@@ -298,7 +300,7 @@ const UserDetail = () => {
                     >
                       Financial
                     </Button>
-                  </div>
+                  </div> */}
                 </Grid>
               </Grid>
             </Card>

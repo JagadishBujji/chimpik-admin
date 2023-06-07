@@ -36,14 +36,14 @@ import { db } from '../Firebase/fbconfig';
 
 const TABLE_HEAD = [
   // { id: 'dateandtime', label: 'Date and Time', alignRight: false },
-  { id: 'from', label: 'From ', alignRight: false },
-  { id: 'to', label: 'To', alignRight: false },
-  { id: 'card', label: 'Card Title', alignRight: false },
-  { id: 'type', label: 'Card Type', alignRight: false },
-  { id: 'date', label: 'Date', alignRight: false },
+  { id: 'from', label: 'Order Id ', alignRight: false },
+  { id: 'to', label: 'Order Start Date', alignRight: false },
+  { id: 'card', label: 'Order End Date', alignRight: false },
+  { id: 'type', label: 'Category', alignRight: false },
+  { id: 'date', label: 'Salary ', alignRight: false },
   // { id: 'clients', label: 'Total Clients', alignRight: false },
   { id: 'status', label: 'Status', alignRight: false },
-  { id: 'release', label: 'Release', alignRight: false },
+  // { id: 'release', label: 'Release', alignRight: false },
   //   { id: 'eventprice', label: 'Portfolio Pdf', alignRight: false },
 ];
 
@@ -78,7 +78,7 @@ function applySortFilter(array, comparator, query) {
   return stabilizedThis.map((el) => el[0]);
 }
 
-export default function PaymentData({ isPaymentReleased }) {
+export default function JobsData({ isPaymentReleased }) {
   const [page, setPage] = useState(0);
 
   const [order, setOrder] = useState('asc');
@@ -147,12 +147,7 @@ export default function PaymentData({ isPaymentReleased }) {
   const [transactions, setTransactions] = useState([]);
 
   useEffect(() => {
-    const q = query(
-      collection(db, 'transactions'),
-      where('is_payment_released', '==', isPaymentReleased),
-      where('payment_status', '==', 'success'),
-      OB('payment_released_timestamp', 'desc')
-    );
+    const q = query(collection(db, 'hireDetailsList'), OB('timestamp', 'desc'));
     getDocs(q)
       .then((querySnapshot) => {
         const arr = [];
@@ -178,7 +173,7 @@ export default function PaymentData({ isPaymentReleased }) {
     // console.log('amountReleased:', transaction);
     // eslint-disable-next-line no-alert, no-restricted-globals
     if (confirm('Please confirm to release amount.') === true) {
-      const transactionRef = doc(db, 'transactions', transaction.docId);
+      const transactionRef = doc(db, 'hireDetailsList');
       try {
         const currentDate = new Date();
 
@@ -212,8 +207,11 @@ export default function PaymentData({ isPaymentReleased }) {
   return (
     <Card sx={{ padding: '20px' }}>
       {/* <UserListToolbar numSelected={selected.length} filterName={filterName} onFilterName={handleFilterByName} /> */}
+      <Typography sx={{ flex: '1 1 100%' }} variant="h6" id="tableTitle" component="div">
+        Jobs List
+      </Typography>
       <Scrollbar sx={{ padding: '20px' }}>
-        <TableContainer sx={{ minWidth: 1800 }}>
+        <TableContainer sx={{ minWidth: 1400 }}>
           <Table>
             <UserListHead
               order={order}
@@ -241,7 +239,7 @@ export default function PaymentData({ isPaymentReleased }) {
                       role="checkbox"
                       selected={isItemSelected}
                       aria-checked={isItemSelected}
-                      // onClick={() => navigate(`/dashboard/hirer/:id`)}
+                      onClick={() => navigate(`/dashboard/jobs/${row.doc_id}`)}
                     >
                       {/* <TableCell padding="checkbox">
                         <Checkbox checked={isItemSelected} onChange={(event) => handleClick(event, name)} />
@@ -251,31 +249,31 @@ export default function PaymentData({ isPaymentReleased }) {
                         <Stack direction="row" alignItems="center" spacing={2}>
                           <Avatar alt={name} src={avatarUrl} />
                           <Typography variant="subtitle2" noWrap>
-                            {row.from_name}
+                            {row.orderId}
                           </Typography>
                         </Stack>
                       </TableCell>
                       <TableCell sx={{ color: 'gray' }} align="left">
-                        {row.to_name}
+                        {row.orderStartDate}
                       </TableCell>
                       <TableCell sx={{ color: 'gray' }} align="left">
-                        {row.card_title}
+                        {row.orderEndDate}
                       </TableCell>
                       <TableCell sx={{ color: 'gray' }} align="left">
-                        {row.isTeamHire ? 'TeamHire' : 'Freebie'}
+                        {row.category}
                       </TableCell>
                       <TableCell sx={{ color: 'gray' }} align="left">
-                        {isPaymentReleased ? row.payment_released_date : row.payment_date}
+                        {row.salaryPerPerson}
                       </TableCell>
                       {/* <TableCell sx={{ color: 'gray' }} align="left">
-                          2
+                      {row.}
                         </TableCell> */}
                       <TableCell sx={{ color: 'gray' }} align="left">
-                        <Label variant="ghost" color={(row.payment_status === 'success' && 'success') || 'error'}>
-                          {sentenceCase(row.payment_status)}
+                        <Label variant="ghost" color={(row.hireStatus === 'success' && 'success') || 'error'}>
+                          {sentenceCase(row.hireStatus)}
                         </Label>
                       </TableCell>
-                      {!isPaymentReleased && (
+                      {/* {!isPaymentReleased && (
                         <TableCell sx={{ color: 'gray' }} align="left">
                           <Button open={open} onClick={handleOpen}>
                             View
@@ -290,7 +288,7 @@ export default function PaymentData({ isPaymentReleased }) {
                             />
                           )}
                         </TableCell>
-                      )}
+                      )} */}
 
                       {/* <TableCell sx={{ color: 'gray' }} align="left">
                         <img src="../images/pdf.png" alt="" width="40px" height="40px" />

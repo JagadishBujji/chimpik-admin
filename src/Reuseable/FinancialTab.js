@@ -5,7 +5,7 @@ import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
-import PaymentData from './PaymentData';
+import PaymentData from './JobsData';
 import EarningTable from './EarningTable';
 import TransactionTable from './TransactionTable';
 import PendingTable from './PendingTable';
