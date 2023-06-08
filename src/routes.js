@@ -12,11 +12,12 @@ import Profile from './pages/Profile';
 import DashboardApp from './pages/DashboardApp';
 import TeamHirer from './Reuseable/TeamHirer';
 import FreeBee from './Reuseable/FreeBee';
-import UserDetail from './Reuseable/UserDetail';
+import UserDetail from './Reuseable/EventDetail';
 import Jobs from './pages/Jobs';
 import Financial from './Reuseable/Financial';
 import UserDetails from './Reuseable/UserDetails';
 import JobsDetails from './Reuseable/JobsDetails';
+import ReportJobs from './pages/ReportJobs';
 
 // ----------------------------------------------------------------------
 
@@ -38,9 +39,11 @@ export default function Router() {
         { path: 'profile', element: <Profile /> },
         { path: 'jobs', element: <Jobs /> },
         { path: 'jobs/:id', element: <JobsDetails /> },
-        { path: 'blog', element: <Blog /> },
-        { path: 'hirer/:id', element: <TeamHirer /> },
-        { path: 'freebee/:id', element: <FreeBee /> },
+        { path: 'report-jobs', element: <ReportJobs /> },
+
+        // { path: 'blog', element: <Blog /> },
+        // { path: 'hirer/:id', element: <TeamHirer /> },
+        // { path: 'freebee/:id', element: <FreeBee /> },
       ],
     },
     {

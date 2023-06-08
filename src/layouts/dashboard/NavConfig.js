@@ -3,7 +3,7 @@ import Iconify from '../../components/Iconify';
 
 // ----------------------------------------------------------------------
 
-const getIcon = (name) => <Iconify icon={name} width={22} height={22}  />;
+const getIcon = (name) => <Iconify icon={name} width={22} height={22} />;
 
 const navConfig = [
   {
@@ -22,12 +22,17 @@ const navConfig = [
     path: '/dashboard/jobs',
     icon: getIcon('pajamas:work'),
   },
-  // {
-  //   title: 'Report Job',
-  //   path: '/dashboard/profile',
-  //   icon: getIcon('healthicons:ui-user-profile'),
-  // },
-  
+  {
+    title: 'Reported jobs',
+    path: '/dashboard/report-jobs',
+    icon: getIcon('material-symbols:report-outline'),
+  },
+  {
+    title: 'Profile',
+    path: '/dashboard/profile',
+    icon: getIcon('healthicons:ui-user-profile'),
+  },
+
   // {
   //   title: 'login',
   //   path: '/login',

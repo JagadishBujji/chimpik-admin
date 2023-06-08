@@ -4,6 +4,8 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../Firebase/fbconfig';
 import UploadedImage from './UploadedImage';
+import AppliedJobList from '../sections/@dashboard/app/AppliedJobList';
+import JobList from '../sections/@dashboard/app/JobList';
 
 const images = [
   {
@@ -47,7 +49,7 @@ const JobsDetails = () => {
           </Typography>
         </Stack>
         <Grid container spacing={3}>
-          <Grid item xs={12} sm={6} md={7}>
+          <Grid item xs={12} sm={6} md={5}>
             <Card sx={{ p: 2 }}>
               <Grid container spacing={3}>
                 <Grid item xs={12} sm={6} md={6}>
@@ -137,13 +139,14 @@ const JobsDetails = () => {
               </Grid>
             </Card>
           </Grid>
-          <Grid item xs={12} sm={6} md={5}>
-            <Card sx={{ p: 2 }}>
+          <Grid item xs={12} sm={6} md={7}>
+            {/* <Card sx={{ p: 2 }}>
               <p>
                 <b>Invitation Card</b>
               </p>
               <UploadedImage url={images} />
-            </Card>
+            </Card> */}
+            <JobList/>
           </Grid>
         </Grid>
       </Stack>

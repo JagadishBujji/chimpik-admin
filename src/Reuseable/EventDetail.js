@@ -4,12 +4,13 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../Firebase/fbconfig';
 import UploadedImage from './UploadedImage';
+import AppliedJobList from '../sections/@dashboard/app/AppliedJobList';
 
-const images = [
-  {
-    imageUrl: '/images/pdf.png',
-  },
-];
+// const images = [
+//   {
+//     imageUrl: '/images/pdf.png',
+//   },
+// ];
 const UserDetail = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState({});
@@ -47,7 +48,7 @@ const UserDetail = () => {
           </Typography>
         </Stack>
         <Grid container spacing={3}>
-          <Grid item xs={12} sm={6} md={7}>
+          <Grid item xs={12} sm={6} md={5}>
             <Card sx={{ p: 2 }}>
               <Grid container spacing={3}>
                 <Grid item xs={12} sm={6} md={6}>
@@ -305,13 +306,11 @@ const UserDetail = () => {
               </Grid>
             </Card>
           </Grid>
-          <Grid item xs={12} sm={6} md={5}>
-            <Card sx={{ p: 2 }}>
-              <p>
-                <b>Invitation Card</b>
-              </p>
-              <UploadedImage url={images} />
-            </Card>
+          <Grid item xs={12} sm={6} md={7}>
+            {/* <p>
+              <b>Applied Jobs list</b>
+            </p> */}
+            <AppliedJobList />
           </Grid>
         </Grid>
       </Stack>

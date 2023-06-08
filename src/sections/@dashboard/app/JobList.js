@@ -48,14 +48,14 @@ import USERLIST from '../../../_mock/user';
 //   { id: 'eventprice', label: 'Event Price', alignRight: false },
 // ];
 const TABLE_HEAD = [
-  { id: 'title', label: 'Order Name', alignRight: false },
-  { id: 'service', label: 'Event Date', alignRight: false },
-  { id: 'experience', label: 'Event Location', alignRight: false },
-  { id: 'video_gear', label: 'Category', alignRight: false },
-  { id: 'description', label: 'Customer Name', alignRight: false },
+  { id: 'title', label: 'Hire Order ID', alignRight: false },
+  { id: 'service', label: 'Event Close date', alignRight: false },
+  { id: 'experience', label: 'Applied Person ID', alignRight: false },
+  { id: 'video_gear', label: 'Status', alignRight: false },
+  // { id: 'description', label: 'Customer Name', alignRight: false },
   // { id: 'price', label: 'Contact Number', alignRight: false },
   // { id: 'price', label: 'Address', alignRight: false },
-  { id: 'section', label: 'Order Status', alignRight: false },
+  // { id: 'section', label: 'Order Status', alignRight: false },
 ];
 
 // ----------------------------------------------------------------------
@@ -89,7 +89,7 @@ function applySortFilter(array, comparator, query) {
   return stabilizedThis.map((el) => el[0]);
 }
 
-export default function EventTable() {
+export default function JobList() {
   const [page, setPage] = useState(0);
 
   const [order, setOrder] = useState('asc');
@@ -159,7 +159,7 @@ export default function EventTable() {
 
   useEffect(() => {
     const getData = async () => {
-      const querySnapshot = await getDocs(query(collection(db, 'orders')));
+      const querySnapshot = await getDocs(query(collection(db, 'appliedPerson')));
       const arr = [];
       querySnapshot.forEach((doc) => {
         const data = doc.data();
@@ -182,10 +182,10 @@ export default function EventTable() {
     <Card sx={{ padding: '20px' }}>
       {/* <UserListToolbar numSelected={selected.length} filterName={filterName} onFilterName={handleFilterByName} /> */}
       <Typography sx={{ flex: '1 1 100%' }} variant="h6" id="tableTitle" component="div">
-        Event List
+        Jobs list
       </Typography>
       <Scrollbar sx={{ padding: '20px' }}>
-        <TableContainer sx={{ minWidth: 1000 }}>
+        <TableContainer sx={{ minWidth: 800 }}>
           <Table>
             <UserListHead
               order={order}
@@ -215,7 +215,7 @@ export default function EventTable() {
                         <Checkbox checked={isItemSelected} onChange={(event) => handleClick(event, name)} />
                       </TableCell> */}
                     <TableCell sx={{ color: 'gray', width: '30%' }} align="left" padding="checkbox">
-                      {row?.orderName ? row?.orderName : ''}
+                      {row?.hireOrderId ? row?.hireOrderId : ''}
                     </TableCell>
 
                     <TableCell sx={{ color: 'gray', width: '25%' }} component="th" scope="row" padding="none">
@@ -224,22 +224,38 @@ export default function EventTable() {
                         <Typography variant="subtitle2" noWrap>
                           {/* {row?.service ? row?.service?.map((fs) => `${fs} `) : ''}  */}
                           {/* service is coming as string: service: "Videography" */}
-                          {row?.eventDate ? row?.eventDate : ''}
+                          {row?.eventcloseDate ? row?.eventcloseDate : ''}
                         </Typography>
                       </Stack>
                     </TableCell>
                     <TableCell sx={{ color: 'gray', width: '200px' }} align="left">
-                      {row.eventLocation ? row.eventLocation : ''}
+                      {row.appliedPersonUid ? row.appliedPersonUid : ''}
                     </TableCell>
                     <TableCell sx={{ color: 'gray', width: '40%' }} align="left">
-                      {row.category ? row.category : ''}
+                      {row.appliedStatus ? row.appliedStatus : ''}
                     </TableCell>
-                    <TableCell sx={{ color: 'gray', width: '30%' }} align="left">
-                      {row.customerDetails.customerName ? row.customerDetails.customerName : ''}
+                    {/* <TableCell sx={{ color: 'gray', width: '30%' }} align="left">
+                      {row.customerName ? row.customerName : ''}
                     </TableCell>
                     <TableCell sx={{ color: 'gray' }} align="left">
                       {row?.orderStatus}
-                    </TableCell>
+                    </TableCell> */}
+                    {/* <TableCell sx={{ color: 'gray' }} align="left">
+                      {row?.section}
+                    </TableCell> */}
+
+                    {/* <TableCell onClick={(e) => e.stopPropagation()} sx={{ color: 'gray' }} align="right">
+                     
+                      <MenuItem
+                        onClick={() => {
+                          console.log('navigate');
+                          navigate(`/dashboard/freebee/${row.doc_id}`);
+                        }}
+                        sx={{ color: 'text.secondary' }}
+                      >
+                        <ListItemText primary="View" primaryTypographyProps={{ variant: 'body2' }} />
+                      </MenuItem>
+                    </TableCell> */}
                   </TableRow>
                 );
               })}
