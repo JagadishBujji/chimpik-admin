@@ -203,7 +203,7 @@ export default function OrderTrackingTable() {
                       selected={isItemSelected}
                       aria-checked={isItemSelected}
                       // onClick={() => navigate(`/dashboard/hirer/:id`)}
-                      onClick={() => navigate(`/dashboard/hirer/${row.doc_id}`)}
+                      onClick={() => navigate(`/dashboard/user/${row.doc_id}`)}
                     >
                       {/* <TableCell padding="checkbox">
                         <Checkbox checked={isItemSelected} onChange={(event) => handleClick(event, name)} />

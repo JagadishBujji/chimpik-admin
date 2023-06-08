@@ -18,6 +18,7 @@ import Financial from './Reuseable/Financial';
 import UserDetails from './Reuseable/UserDetails';
 import JobsDetails from './Reuseable/JobsDetails';
 import ReportJobs from './pages/ReportJobs';
+import ReportedDetails from './Reuseable/ReportedDetails';
 
 // ----------------------------------------------------------------------
 
@@ -33,6 +34,7 @@ export default function Router() {
       // <Navigate to="/login" />,
       children: [
         { path: 'user', element: <DashboardApp /> },
+        { path: 'user/:id', element: <TeamHirer /> },
         { path: 'event', element: <User /> },
         // { path: 'event/:id/financial', element: <Financial /> },
         { path: 'event/:id', element: <UserDetail /> },
@@ -40,9 +42,10 @@ export default function Router() {
         { path: 'jobs', element: <Jobs /> },
         { path: 'jobs/:id', element: <JobsDetails /> },
         { path: 'report-jobs', element: <ReportJobs /> },
+        { path: 'report-jobs/:id', element: <ReportedDetails /> },
 
         // { path: 'blog', element: <Blog /> },
-        // { path: 'hirer/:id', element: <TeamHirer /> },
+       
         // { path: 'freebee/:id', element: <FreeBee /> },
       ],
     },

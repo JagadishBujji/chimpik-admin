@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "site": "kangru-admin",
+    "site": "admin-chimpik",
     "public": "build",
     "ignore": [
       "firebase.json",

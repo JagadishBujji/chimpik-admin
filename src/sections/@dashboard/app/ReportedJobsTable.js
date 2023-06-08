@@ -210,7 +210,7 @@ export default function ReportedJobsTable() {
                     role="checkbox"
                     selected={isItemSelected}
                     aria-checked={isItemSelected}
-                    onClick={() => navigate(`/dashboard/event/${row.doc_id}`)}
+                    onClick={() => navigate(`/dashboard/report-jobs/${row.doc_id}`)}
                   >
                     {/* <TableCell padding="checkbox">
                         <Checkbox checked={isItemSelected} onChange={(event) => handleClick(event, name)} />
